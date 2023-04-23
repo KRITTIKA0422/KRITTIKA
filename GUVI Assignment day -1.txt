@@ -1,0 +1,141 @@
+Q1: Write a blog on Difference between HTTP1.1 vs HTTP2
+
+Ans:
+The full form of HTTP is Hypertext Transfer Protocol. It is used in client-server communication. By using HTTP user sends the request to the server and the server sends the response back to the user. It is a network delay sensitive protocol in which the page loading speed is inversely proportional to network delay. There are several stages of development of HTTP among which we will talk about HTTP1.1, created in 1997 and the latest is HTTP2, created in 2015.
+
+HTTP1.1: To explain the working phenomenon of HTTP1.1 we are taking an example. Suppose, there is a we make a request to the server for a HTML Page and the server responds as the resourse of the same HTML Page. Now,before we have sent the request and the response there is a TCP connection (Transmission Control Protocol) established between client and server. Again, suppose we are making another request to the server for  an image file (image.jpg) and the server gives a response as an image (image.jpg). For this, the connection was not lost after the first request. This is because we add a keep-alive header which is the part of the request so that there is an open connection between the server and client.Therefore, there is a persistent connection. This means several requests & responses are merged in a single connection which is the main drawback of HTTP1.1 that lead to the creation of HTTP2. HTTP1.1 allows multiple requests from the user in pipelining form for a single connection and accordingly responds to it that is, in case of HTTP1.1 a request is given a response and then it considers the next request. HTTP1.1 transfers all the requests and responses in the plain text message form which is the second drawback of HTTP1.1. Thirdly, the head of line blocking in which TCP connection is blocked all other requests until the response is not received. Also, all the information related to the header file is repeated in every request. HTTP1.1 expands on the caching support by using headers like cache control and conditional headers file if-match and also entity tags. So, the page loading speed is much slower for HTTP1.1. HTTP1.1 is secure as it uses digest authentication.
+
+HTTP2: HTTP2 was developed over the SPDY protocol that is obsolete open-specification communication protocol developed for transporting web content. HTTP2 works on the binary framing layer instead of plain text message. The binary framing layer converts all the messages in binary format. It works on fully multiplexed that is one TCP connection is used for multiple requests. HTTP2 uses multiplexing for receiving requests and responding for a single connection which means it considers all the request from the client at once and responds to all the requests at the same time which is done by using streams. HTTP2  also avoids network delay by using multiplexing. HTTP2 uses HPACK which splits data from header and it compresses the header. So, the page loading speed is faster using HTTP2 than HTTP1.1. The server sends all the other files like Cascading Style Sheets (CSS) and Javascript (JS) without the request of the client using the PUSH frame. The PUSH frame is an additional feature of HTTP2 called server push which gives some additional information related to the previous requests to the client before the client has requested for it. HTTP2 is more secure as it is more efficient in dealing with the security related issues and also shows connection error for any inadequate security. In HTTP2, less changes occurs in terms of caching, it also cancels the pushed stream if the resource is already present in cache.
+
+Summarizing the differences between HTTP1.1 and HTTP2 as follows:
+
+Features of HTTP1.1 are as follows-
+
+i) There is head of line blocking that blocks all the requests behind it until it does not get the proper resources for response.
+ii) It uses requests resource inlining for use getting multiple pages.
+iii) It repeats all the information related to the header file in every request.
+iv) It works on the textual format that is plain text message format.
+v) The page loading speed is much slower for HTTP1.1.
+
+Features of HTTP2 are as follows-
+
+i) It uses multiplexing in which one TCP connection is required for multiple requests. 
+ii) It uses PUSH frame by server that collects all multiple pages.
+iii) It uses HPACK for compressing header files.
+iv) It works on the binary protocol that converts all the messages in binary format.
+v) The page loading speed is much faster for HTTP2.
+
+Q2: Write a blog about objects and its internal representation in Javascript 
+
+Ans:Objects are important data types in javascript. In Javascript, an object is the identity of a variable that can have multiple values and this nature of an object makes it different from the primitive datatypes (boolean, number, string, undefined,etc). Primitive data types contain one value but objects can hold many values in form of Key: value pair. These keys can be variables or functions and are called properties and methods, respectively, in the context of an object. So, an object is identified and associated with its characteristics and functions which are known as the properties and methods of the object respectively. So, the object in Javascript is a collection of named values defined by its properties and methods. 
+
+1.) Object Properties-
+Every object has some property associated with some value. These values can be accessed using these properties associated with them.
+
+For Example-
+var Laptop = new Object();
+
+Laptop.make = "Lenevo";
+
+Laptop.model = "Think Pad";
+
+Laptop.color = "White";
+
+Laptop.Ram = 8 GB;
+
+Laptop.Harddisk = "1tb";
+
+Laptop.Year= "2022";
+
+After creating Laptop object, the value inside the object can be accessed using keys.
+
+i.e.
+
+Laptop.make
+
+Output: Lenevo
+
+These values can be accessed using brackets notation also.
+
+Laptop[make] 
+
+Output: Lenevo
+
+Further there are some syntax for adding, deleting and accessing a property to an object which are as follows:
+
+i) The syntax for adding a property to an object is :
+ObjectName.ObjectProperty = propertyValue;
+
+ii) The syntax for deleting a property from an object is:
+delete ObjectName.ObjectProperty;
+
+iii) The syntax to access a property from an object is:
+objectName.property        
+           or
+objectName["property”]     
+           or
+objectName[expression] 
+
+2.) Object Methods-
+An object method is an object property containing a function associated with it.
+Let us take an example- For preparing graphs digitally in Laptop we require Excel.
+
+function(){return Excel.on}
+
+Similarly, for doing calculations, writing stories, searching data in internet we use Laptops. So, these functions/ uses of Laptop define Methods of Laptop Object.
+So, for Java Script Object methods is “Methods are actions that can be performed on objects.”
+
+3.) Creating Javascript Object- Javascript object can be created with the help of the following ways-
+
+i) Create JavaScript Object with Object Literal
+The most easy way to create a javascript object with the help of object literal. In object literal, the property and values are defined inside curly braces. For Example-
+let laptop = {name: 'Think Pad', maker:'Lenevo', color:'White'};
+
+ii) Create JavaScript Object with Constructor
+Constructor is a function in which with the help of "new" keyword, constructor function allows to create multiple objects of same type. For Example-
+
+function laptop(name, maker) {
+   this.name = name;
+   this.maker = maker;
+}
+let laptop1 = new Laptop("Think Pad", "Lenevo");
+let laptop2 = new Laptop("iPad", "Apple");
+
+console.log(laptop1.name);    //Output: Think Pad
+console.log(laptop2.name);    //Output: iPad
+
+iii)  Create JavaScript Object using the JavaScript Keyword new-
+The following example also creates a new JavaScript object with four properties:
+
+var laptop = new Object();
+laptop.name = "Think Pad";
+laptop.make = "Lenevo";
+laptop.year = 2022;
+laptop.color = "white";
+
+iv) Create JavaScript Object using the Object.create method-
+Objects can also be created using the Object.create() method. This method is useful, because it allows the user to choose the prototype object for the object, the user wants to create, without defining a constructor function.
+
+For example-
+
+// Computer properties and method encapsulation
+var Computer = {
+  type: 'Laptop', // Default value of properties
+  displayType: function() {  // Method which will display type of computer
+    console.log(this.type);
+  }
+};
+// Create new computer type called computer1 
+var computer1 = Object.create(Computer);
+computer1.displayType(); // Output:Laptop
+// Create new computer type called Desktops
+var desktop = Object.create(Computer);
+desktop.type = 'Desktops';
+desktop.displayType(); 
+// Output:Desktops
+
+
+
+
+ 
+  
